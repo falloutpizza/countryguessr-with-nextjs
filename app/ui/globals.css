@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+:root {
+  background-color: rgb(180, 215, 245);
+}
+
+.main-container {
+  background-color: aliceblue;
+  filter: drop-shadow(3px 3px 0 black);
+}
