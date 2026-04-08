@@ -1,3 +1,5 @@
+import RightArrow from "../../globals/icons/RightArrow";
+
 export default function LoginLink({
   onMouseEnter,
   linkName,
@@ -12,6 +14,7 @@ export default function LoginLink({
       onMouseEnter={onMouseEnter}
     >
       {linkName}
+      {linkName !== "login/sign up" && <RightArrow />}
     </a>
   );
 }

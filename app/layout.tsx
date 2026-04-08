@@ -1,4 +1,4 @@
-import "./ui/globals.css";
+import "./ui/globals/globals.css";
 import { Roboto_Mono } from "next/font/google";
 
 import Navbar from "./ui/navbar/navbar";

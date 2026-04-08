@@ -1,3 +1,5 @@
+import RightArrow from "../../globals/icons/RightArrow";
+
 export default function GamemodeLink({
   onMouseEnter,
   linkName,
@@ -12,6 +14,7 @@ export default function GamemodeLink({
       onMouseEnter={onMouseEnter}
     >
       {linkName}
+      {linkName !== "gamemodes" && <RightArrow />}
     </a>
   );
 }
