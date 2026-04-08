@@ -1,7 +1,7 @@
 import "./ui/globals/globals.css";
 import { Roboto_Mono } from "next/font/google";
 
-import Navbar from "./ui/navbar/navbar";
+import Navbar from "./ui/navbar/Nav";
 
 const roboto = Roboto_Mono({
   subsets: ["latin"],

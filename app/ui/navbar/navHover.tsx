@@ -1,5 +1,5 @@
-import LoginLink from "./login/loginLink";
-import GamemodeLink from "./gamemodes/gamemodeLink";
+import LoginLink from "./login/LoginLink";
+import GamemodeLink from "./gamemodes/GamemodeLink";
 
 export default function NavHover({
   hovered,

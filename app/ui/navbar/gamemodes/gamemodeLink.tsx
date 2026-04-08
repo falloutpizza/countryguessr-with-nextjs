@@ -10,7 +10,7 @@ export default function GamemodeLink({
   return (
     <a
       href=""
-      className="hover:underline ml-5 m-2 "
+      className="hover:underline sm:ml-5 m-2 "
       onMouseEnter={onMouseEnter}
     >
       {linkName}
