@@ -1,4 +1,4 @@
-export default function Link({
+export default function GamemodeLink({
   onMouseEnter,
   linkName,
 }: {
