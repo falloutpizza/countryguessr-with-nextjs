@@ -15,18 +15,28 @@ export default function NavSmall() {
         {opened && <XCircle />}
         {!opened && <DotCircle />}
       </button>
-      <div
-        className={
-          opened
-            ? "rounded-2xl text-xs flex flex-col bg-orange-400 transition-all duration-50 border-2 border-black"
-            : "rounded-2xl text-xs flex flex-col bg-orange-400 transition-all duration-50 invisible"
-        }
-      >
-        <LoginLink linkName="login" />
-        <LoginLink linkName="sign up" />
-        <GamemodeLink linkName="gamemode 1" />
-        <GamemodeLink linkName="gamemode 2" />
-        <GamemodeLink linkName="gamemode 3" />
+      <div className="text-xs">
+        <div
+          className={
+            opened
+              ? "bg-orange-400 flex flex-col rounded-t-2xl border-2 border-b-1 border-black transition-all duration-50"
+              : "bg-orange-400 flex flex-col rounded-t-2xl invisible transition-all duration-50"
+          }
+        >
+          <LoginLink linkName="login" />
+          <LoginLink linkName="sign up" />
+        </div>
+        <div
+          className={
+            opened
+              ? "bg-lime-300 flex flex-col rounded-b-2xl border-2 border-t-1 border-black transition-all duration-50"
+              : "bg-lime-300 flex flex-col rounded-b-2xl invisible transition-all duration-50"
+          }
+        >
+          <GamemodeLink linkName="gamemode 1" />
+          <GamemodeLink linkName="gamemode 2" />
+          <GamemodeLink linkName="gamemode 3" />
+        </div>
       </div>
     </div>
   );
