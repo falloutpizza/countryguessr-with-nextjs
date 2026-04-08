@@ -8,3 +8,14 @@
   background-color: aliceblue;
   filter: drop-shadow(3px 3px 0 black);
 }
+
+button {
+  transition:
+    transform 0.1s ease-in-out,
+    filter 0.1s ease-in-out;
+}
+
+button:hover {
+  transform: translateY(-5px);
+  filter: drop-shadow(2px 2px 0 black);
+}
