@@ -1,6 +1,8 @@
 import "./ui/globals.css";
 import { Roboto_Mono } from "next/font/google";
 
+import Navbar from "./ui/navbar/navbar";
+
 const roboto = Roboto_Mono({
   subsets: ["latin"],
   weight: ["400", "600"],
@@ -17,6 +19,7 @@ export default function RootLayout({
         className={`${roboto.className} flex text-center h-screen justify-center items-center`}
       >
         <main className="main-container h-9/10 w-9/10 rounded-4xl border-black border-2">
+          <Navbar />
           {children}
         </main>
       </body>
