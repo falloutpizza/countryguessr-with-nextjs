@@ -18,10 +18,13 @@ export default function NavBig() {
           onMouseEnter={() => setHovered("login")}
           linkName="login/sign up"
         />
-        <GamemodeLink
+        <a
+          href={"/gamemodes"}
+          className="hover:underline sm:ml-5 m-2 "
           onMouseEnter={() => setHovered("gamemodes")}
-          linkName="gamemodes"
-        />
+        >
+          gamemodes
+        </a>
       </div>
       <NavHover hovered={hovered} setHovered={setHovered} />
     </div>
