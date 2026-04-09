@@ -11,10 +11,10 @@ export default function NavSmall() {
   const [opened, setOpened] = useState(false);
   return (
     <div className="sm:hidden block m-3 text-left">
-      <button className="cursor-pointer" onClick={() => setOpened(!opened)}>
+      <div className="cursor-pointer" onClick={() => setOpened(!opened)}>
         {opened && <XCircle />}
         {!opened && <DotCircle />}
-      </button>
+      </div>
       <div className="text-xs">
         <div
           className={
