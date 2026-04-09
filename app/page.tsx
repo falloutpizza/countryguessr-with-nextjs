@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <>
-      <h1 className="sm:text-2xl md:text-4xl font-semibold mt-40">
+      <h1 className="sm:text-2xl md:text-4xl font-semibold sm:mt-40 mt-20">
         countryguessr dot com
       </h1>
       <Link href="/gamemodes">

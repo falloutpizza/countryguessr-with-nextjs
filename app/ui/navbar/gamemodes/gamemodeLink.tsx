@@ -7,7 +7,7 @@ export default function GamemodeLink({
   onMouseEnter?: () => void;
   linkName: string;
 }) {
-  let route: string = linkName.replace(" ", "-");
+  let route: string = linkName.replaceAll(" ", "-");
   return (
     <a
       href={"/" + route}
