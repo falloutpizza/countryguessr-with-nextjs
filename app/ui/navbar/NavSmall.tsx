@@ -33,9 +33,9 @@ export default function NavSmall() {
               : "bg-lime-300 flex flex-col rounded-b-2xl invisible transition-all duration-50"
           }
         >
-          <GamemodeLink linkName="gamemode 1" />
-          <GamemodeLink linkName="gamemode 2" />
-          <GamemodeLink linkName="gamemode 3" />
+          <GamemodeLink linkName="the original countryguessr" />
+          <GamemodeLink linkName="for the challenge enthusiasts" />
+          <GamemodeLink linkName="competitive queue" />
         </div>
       </div>
     </div>

@@ -10,7 +10,7 @@ export default function NavBig() {
   const [hovered, setHovered] = useState("");
   return (
     <div
-      className="hidden sm:block m-5 mt-3"
+      className="hidden sm:block m-3 mt-1"
       onMouseLeave={() => setHovered("")}
     >
       <div className="flex">

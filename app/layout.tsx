@@ -18,7 +18,7 @@ export default function RootLayout({
       <body
         className={`${roboto.className} flex text-center h-screen justify-center items-center`}
       >
-        <main className="main-container h-9/10 w-9/10 rounded-4xl border-black border-2">
+        <main className="main-container h-9/10 w-9/10 rounded-4xl border-black border-2 overflow-scroll p-2">
           <Navbar />
           {children}
         </main>

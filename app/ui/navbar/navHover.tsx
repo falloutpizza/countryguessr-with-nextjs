@@ -17,7 +17,7 @@ export default function NavHover({
   //setting class name
   let classes: string;
   classes = hovered
-    ? `border-black rounded-2xl border-2 block ml-4 text-left text-sm w-60 transition-all duration-200 flex flex-col ${bgColor}`
+    ? `border-black rounded-2xl border-2 block ml-4 text-left text-xs w-60 transition-all duration-200 flex flex-col ${bgColor}`
     : `rounded-2xl ml-4 w-60 h-[100px] invisible transition-all block duration-200`;
 
   return (
@@ -30,9 +30,9 @@ export default function NavHover({
       )}
       {hovered === "gamemodes" && (
         <>
-          <GamemodeLink linkName="gamemode 1" />
-          <GamemodeLink linkName="gamemode 2" />
-          <GamemodeLink linkName="gamemode 3" />
+          <GamemodeLink linkName="the original countryguessr" />
+          <GamemodeLink linkName="for the challenge enthusiasts" />
+          <GamemodeLink linkName="competitive queue" />
         </>
       )}
     </div>

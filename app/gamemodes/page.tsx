@@ -11,8 +11,8 @@ export default function Gamemodes() {
         desc="guess the country using its silhouette and three given hints"
       />
       <GamemodeLink
-        gamemode="up for a challenge?"
-        desc="same as normal mode, but the country's silhouette is initially blurred and using hints costs more points"
+        gamemode="for the challenge enthusiasts"
+        desc="normal mode but the country's silhouette is blurred and hints cost more points"
       />
       <GamemodeLink
         gamemode="competitive queue"
