@@ -1,0 +1,30 @@
+//everytime a function is called, return an object with country image, continent, pop. range, and flag desc loaded
+export default function fetchRandomCountry(countries) {
+  let random = Math.floor(Math.random() * 193 + 1);
+  let randomCountry = countries[random];
+  let cont;
+
+  while (randomCountry.cca2 === "PS") {
+    random = Math.floor(Math.random() * 250 + 1);
+    randomCountry = countries[random];
+  }
+  if (randomCountry.continents[1]) {
+    cont = `${randomCountry.continents[0]} & ${randomCountry.continents[1]}`;
+  } else {
+    cont = randomCountry.continents[0];
+  }
+  //special case for lebanon
+  if (randomCountry.name.common === "Lebanon") {
+    randomCountry.flags.alt.replace("Lebanese Cedar", "cedar");
+  }
+  const currencyName = Object.keys(randomCountry.currencies)[0];
+  const currencyFull = randomCountry.currencies[currencyName].name;
+  const currency = currencyFull.split(" ").splice(-1)[0];
+  return {
+    image: `/countries/${randomCountry.cca2.toLowerCase()}/vector.svg`,
+    name: randomCountry.name.common,
+    hint1: `This country is in ${cont}`,
+    hint2: `The currency this country uses is the ${currency}`,
+    hint3: randomCountry.flags.alt.replaceAll(randomCountry.name.common, "???"),
+  };
+}
