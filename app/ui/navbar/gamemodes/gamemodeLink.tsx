@@ -10,7 +10,7 @@ export default function GamemodeLink({
   let route: string = linkName.replaceAll(" ", "-");
   return (
     <a
-      href={"/" + route}
+      href={"/gamemodes/" + route}
       className="hover:underline sm:ml-5 m-2 "
       onMouseEnter={onMouseEnter}
     >
