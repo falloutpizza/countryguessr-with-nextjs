@@ -6,8 +6,14 @@ import SearchDropdown from "./SearchDropdown";
 
 export default function InputGuess({
   countries,
+  countryName,
+  guessed,
+  setGuessed,
 }: {
   countries: Array<object>;
+  countryName: string;
+  guessed: string;
+  setGuessed: (g: string) => void;
 }) {
   const [curGuess, setCurGuess] = useState("");
   const [filteredList, setFilteredList] = useState(countries);
@@ -27,6 +33,14 @@ export default function InputGuess({
 
   function handleSubmit(e: any) {
     e.preventDefault();
+
+    if (guessed === "false") {
+      if (curGuess.toLowerCase() === countryName.toLowerCase()) {
+        setGuessed("correct");
+      } else {
+        setGuessed(countryName);
+      }
+    }
   }
   return (
     <form className="mt-5 flex m-auto justify-center" onSubmit={handleSubmit}>
@@ -42,7 +56,7 @@ export default function InputGuess({
       </div>
       <button
         type="submit"
-        className="bg-orange-400 h-fit m-2 px-2 py-1 border-1 border-black rounded-md"
+        className="bg-orange-400 h-fit m-2 px-2 py-1 border-1 border-black rounded-md cursor-pointer"
       >
         submit?
       </button>

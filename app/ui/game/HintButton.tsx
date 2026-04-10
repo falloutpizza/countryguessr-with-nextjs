@@ -29,7 +29,7 @@ export default function HintButton({
           setDisabled();
         }
       }}
-      className="text-sm bg-lime-300 w-4/5 border-black border-1 rounded-md mx-auto my-1 disabled:bg-lime-200 cursor-pointer disabled:cursor-not-allowed"
+      className="text-sm bg-lime-300 w-4/5 border-black border-1 rounded-md mx-auto mt-2 disabled:bg-lime-200 cursor-pointer disabled:cursor-not-allowed"
     >
       {curHintText}
     </button>

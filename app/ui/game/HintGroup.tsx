@@ -13,7 +13,7 @@ export default function HintGroup({ country }: { country: any }) {
   }, [country]);
 
   return (
-    <div className="mt-5">
+    <div className="mt-5 max-h-50 overflow-scroll">
       <HintButton
         hintNum={1}
         initialHintText={country.hint1}
