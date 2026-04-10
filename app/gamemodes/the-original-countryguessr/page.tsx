@@ -1,6 +1,6 @@
 import { countReset } from "console";
-import fetchCountries from "../../_utils/fetchCountries";
-import fetchRandomCountry from "../../_utils/fetchRandomCountry";
+import fetchCountries from "../../services/fetchCountries";
+import fetchRandomCountry from "../../utils/fetchRandomCountry";
 
 export default async function TheOriginalCountryguessr() {
   const countries = await fetchCountries();
