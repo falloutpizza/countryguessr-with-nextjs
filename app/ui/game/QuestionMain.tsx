@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import CountryImage from "./CountryImage";
 import HintGroup from "./HintGroup";
-import NextQuestion from "./NextQuestion";
+import InputGuess from "./InputGuess";
 
 export default function QuestionMain({
   countries,
@@ -20,6 +20,7 @@ export default function QuestionMain({
       </div>
       <div className="md:w-1/2">
         <h1 className="text-3xl font-semibold">guess the country!</h1>
+        <InputGuess countries={countries} />
         <HintGroup country={country} />
       </div>
     </div>
