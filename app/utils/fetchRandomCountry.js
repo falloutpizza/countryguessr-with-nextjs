@@ -25,6 +25,9 @@ export default function fetchRandomCountry(countries) {
     name: randomCountry.name.common,
     hint1: `This country is in ${cont}`,
     hint2: `The currency this country uses is the ${currency}`,
-    hint3: randomCountry.flags.alt.replaceAll(randomCountry.name.common, "???"),
+    hint3: randomCountry.flags.alt.replaceAll(
+      randomCountry.name.common,
+      "this country",
+    ),
   };
 }

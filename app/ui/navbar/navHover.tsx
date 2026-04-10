@@ -17,8 +17,8 @@ export default function NavHover({
   //setting class name
   let classes: string;
   classes = hovered
-    ? `border-black rounded-2xl border-2 block ml-4 text-left text-xs w-60 transition-all duration-200 flex flex-col ${bgColor}`
-    : `rounded-2xl ml-4 w-60 h-[100px] invisible transition-all block duration-200`;
+    ? `border-black rounded-2xl border-2 block ml-4 text-left text-sm w-60 transition-all duration-200 flex flex-col ${bgColor}`
+    : `rounded-2xl text-sm ml-4 w-60 h-[100px] invisible transition-all block duration-200`;
 
   return (
     <div className={classes} onMouseEnter={() => setHovered(hovered)}>
