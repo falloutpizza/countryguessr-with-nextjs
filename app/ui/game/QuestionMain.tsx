@@ -1,11 +1,12 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import CountryImage from "./CountryImage";
 import HintGroup from "./HintGroup";
 import InputGuess from "./InputGuess";
 import Results from "./Results";
 import NextQuestion from "./NextQuestion";
+import Score from "./Score";
 
 export default function QuestionMain({
   countries,
@@ -16,9 +17,22 @@ export default function QuestionMain({
 }) {
   const [country, setCountry] = useState(initCountry);
   const [guessed, setGuessed] = useState("false");
+  const [totalScore, setTotalScore] = useState(0);
+  const [curScore, setCurScore] = useState(100);
+
+  useEffect(() => {
+    if (guessed === "correct") {
+      setTotalScore(() => {
+        return totalScore + curScore;
+      });
+      setCurScore(100);
+    }
+  }, [guessed]);
+
   return (
     <div className="mt-12 mx-10 md:flex">
       <div className="md:w-1/2">
+        <Score guessed={guessed} totalScore={totalScore} curScore={curScore} />
         <CountryImage src={country.image} />
       </div>
       <div className="md:w-1/2">
@@ -30,7 +44,7 @@ export default function QuestionMain({
           setGuessed={setGuessed}
         />
         {guessed !== "false" && <Results guess={guessed} />}
-        <HintGroup country={country} />
+        <HintGroup country={country} setCurScore={setCurScore} />
         <NextQuestion
           countries={countries}
           setCountry={setCountry}

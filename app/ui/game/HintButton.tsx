@@ -9,11 +9,13 @@ export default function HintButton({
   hintNum,
   disabled,
   setDisabled,
+  setCurScore,
 }: {
   initialHintText: string;
   hintNum: number;
   disabled: boolean;
   setDisabled: any;
+  setCurScore: any;
 }) {
   const [curHintText, setCurHintText] = useState("hint #" + hintNum);
   useEffect(() => {
@@ -27,6 +29,7 @@ export default function HintButton({
         if (curHintText !== initialHintText) {
           setCurHintText(initialHintText);
           setDisabled();
+          setCurScore();
         }
       }}
       className="text-sm bg-lime-300 w-4/5 border-black border-1 rounded-md mx-auto mt-2 disabled:bg-lime-200 cursor-pointer disabled:cursor-not-allowed"
