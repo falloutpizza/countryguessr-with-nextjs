@@ -8,9 +8,11 @@ import HintButton from "./HintButton";
 export default function HintGroup({
   country,
   setCurScore,
+  scores,
 }: {
   country: any;
   setCurScore: (s: number) => void;
+  scores: Array<number>;
 }) {
   const [status, setStatus] = useState([false, true, true]);
 
@@ -25,21 +27,21 @@ export default function HintGroup({
         initialHintText={country.hint1}
         disabled={status[0]}
         setDisabled={() => setStatus([false, false, true])}
-        setCurScore={() => setCurScore(95)}
+        setCurScore={() => setCurScore(scores[0])}
       />
       <HintButton
         hintNum={2}
         initialHintText={country.hint2}
         disabled={status[1]}
         setDisabled={() => setStatus([false, false, false])}
-        setCurScore={() => setCurScore(90)}
+        setCurScore={() => setCurScore(scores[1])}
       />
       <HintButton
         hintNum={3}
         initialHintText={country.hint3}
         disabled={status[2]}
         setDisabled={() => {}}
-        setCurScore={() => setCurScore(80)}
+        setCurScore={() => setCurScore(scores[2])}
       />
     </div>
   );

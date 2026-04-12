@@ -47,7 +47,7 @@ export default function QuestionMain({
             totalScore={totalScore}
             curScore={curScore}
           />
-          <CountryImage src={country.image} />
+          <CountryImage blur={curScore} src={country.image} guessed={guessed} />
         </div>
       )}
       {!ended && (
@@ -63,7 +63,7 @@ export default function QuestionMain({
           <HintGroup
             country={country}
             setCurScore={setCurScore}
-            scores={[95, 90, 80]}
+            scores={[80, 60, 40]}
           />
           <div className="flex justify-center">
             <NextQuestion
