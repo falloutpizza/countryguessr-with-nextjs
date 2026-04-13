@@ -7,7 +7,7 @@ import InputGuess from "../InputGuess";
 import Results from "../Results";
 import NextQuestion from "../NextQuestion";
 import Score from "../Score";
-import EndMain from "./EndMain";
+import EndMain from "../EndMain";
 import EndButton from "../EndButton";
 
 export default function QuestionMain({
@@ -47,7 +47,7 @@ export default function QuestionMain({
             totalScore={totalScore}
             curScore={curScore}
           />
-          <CountryImage src={country.image} />
+          <CountryImage src={country.image} guessed={guessed} />
         </div>
       )}
       {!ended && (

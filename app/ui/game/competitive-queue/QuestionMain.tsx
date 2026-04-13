@@ -9,6 +9,7 @@ import NextQuestion from "../NextQuestion";
 import Score from "../Score";
 import EndMain from "../EndMain";
 import EndButton from "../EndButton";
+import Timer from "./Timer";
 
 export default function QuestionMain({
   countries,
@@ -42,12 +43,15 @@ export default function QuestionMain({
     <div className="mt-15 mx-10 md:flex">
       {!ended && (
         <div className="md:w-1/2">
-          <Score
-            guessed={guessed}
-            totalScore={totalScore}
-            curScore={curScore}
-          />
-          <CountryImage blur={curScore} src={country.image} guessed={guessed} />
+          <div className="flex w-full justify-between">
+            <Score
+              guessed={guessed}
+              totalScore={totalScore}
+              curScore={curScore}
+            />
+            <Timer duration={300 * 1000} setEnded={setEnded} />
+          </div>
+          <CountryImage src={country.image} guessed={guessed} />
         </div>
       )}
       {!ended && (
@@ -63,7 +67,7 @@ export default function QuestionMain({
           <HintGroup
             country={country}
             setCurScore={setCurScore}
-            scores={[80, 60, 40]}
+            scores={[95, 90, 80]}
           />
           <div className="flex justify-center">
             <NextQuestion

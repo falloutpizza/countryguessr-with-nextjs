@@ -11,7 +11,7 @@ export default function Score({
     curScore = 0;
   }
   return (
-    <div className="text-left absolute text-sm -z-1">
+    <div className="text-left relative text-sm -z-1">
       <h3 className="font-semibold">score: {totalScore}</h3>
       <p
         className={

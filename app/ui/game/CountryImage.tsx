@@ -38,7 +38,7 @@ export default function CountryImage({
       width={400}
       height={300}
       objectFit="contain"
-      className={`${blurFilter} m-auto mt-2 relative -z-1`}
+      className={`${blurFilter} m-auto -mt-5 relative -z-1`}
       alt="country silhouette"
     />
   );
