@@ -1,13 +1,20 @@
 "use client";
+import fetchRandomCountry from "@/app/utils/fetchRandomCountry";
 
 import { useState, useEffect } from "react";
 
 export default function Timer({
   duration,
   setEnded,
+  setScore,
+  countries,
+  setCountry,
 }: {
   duration: number;
   setEnded: (e: boolean) => void;
+  setScore: (s: number) => void;
+  countries: any;
+  setCountry: (c: object) => void;
 }) {
   const [time, setTime] = useState(duration);
   const [color, setColor] = useState("text-black");
@@ -23,6 +30,9 @@ export default function Timer({
       if (time !== 0) {
         setTime(time - 1000);
       } else {
+        setEnded(true);
+        setScore(0);
+        setCountry(fetchRandomCountry(countries));
         setEnded(true);
       }
       if (time <= 11 * 1000) {

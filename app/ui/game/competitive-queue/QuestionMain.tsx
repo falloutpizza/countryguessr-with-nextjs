@@ -49,7 +49,13 @@ export default function QuestionMain({
               totalScore={totalScore}
               curScore={curScore}
             />
-            <Timer duration={300 * 1000} setEnded={setEnded} />
+            <Timer
+              duration={15 * 1000}
+              setEnded={setEnded}
+              setScore={setTotalScore}
+              countries={countries}
+              setCountry={setCountry}
+            />
           </div>
           <CountryImage src={country.image} guessed={guessed} />
         </div>
@@ -69,20 +75,12 @@ export default function QuestionMain({
             setCurScore={setCurScore}
             scores={[95, 90, 80]}
           />
-          <div className="flex justify-center">
-            <NextQuestion
-              countries={countries}
-              setCountry={setCountry}
-              guessed={guessed}
-              setGuessed={setGuessed}
-            />
-            <EndButton
-              setEnded={setEnded}
-              setScore={setTotalScore}
-              countries={countries}
-              setCountry={setCountry}
-            />
-          </div>
+          <NextQuestion
+            countries={countries}
+            setCountry={setCountry}
+            guessed={guessed}
+            setGuessed={setGuessed}
+          />
         </div>
       )}
       {ended && <EndMain score={totalScore} setEnded={setEnded} />}
