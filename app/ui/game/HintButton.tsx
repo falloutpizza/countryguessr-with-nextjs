@@ -1,6 +1,5 @@
 "use client";
 
-import { init } from "next/dist/compiled/webpack/webpack";
 import { useState } from "react";
 import { useEffect } from "react";
 
