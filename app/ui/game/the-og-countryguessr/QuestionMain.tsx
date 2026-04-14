@@ -74,14 +74,19 @@ export default function QuestionMain({
             />
             <EndButton
               setEnded={setEnded}
-              setScore={setTotalScore}
               countries={countries}
               setCountry={setCountry}
             />
           </div>
         </div>
       )}
-      {ended && <EndMain score={totalScore} setEnded={setEnded} />}
+      {ended && (
+        <EndMain
+          score={totalScore}
+          setEnded={setEnded}
+          setScore={setTotalScore}
+        />
+      )}
     </div>
   );
 }

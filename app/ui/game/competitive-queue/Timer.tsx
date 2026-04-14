@@ -6,18 +6,20 @@ import { useState, useEffect } from "react";
 export default function Timer({
   duration,
   setEnded,
-  setScore,
   countries,
   setCountry,
+  setStarted,
 }: {
   duration: number;
   setEnded: (e: boolean) => void;
-  setScore: (s: number) => void;
-  countries: any;
-  setCountry: (c: object) => void;
+  countries?: any;
+  setCountry?: (c: object) => void;
+  setStarted?: (e: boolean) => void;
 }) {
   const [time, setTime] = useState(duration);
-  const [color, setColor] = useState("text-black");
+  const [color, setColor] = useState(
+    setCountry ? "text-black" : "text-black text-4xl",
+  );
 
   const formatTime = (time: number) => {
     let minutes: number = Math.floor(time / (60 * 1000));
@@ -31,19 +33,29 @@ export default function Timer({
         setTime(time - 1000);
       } else {
         setEnded(true);
-        setScore(0);
-        setCountry(fetchRandomCountry(countries));
-        setEnded(true);
+        if (setCountry && setStarted) {
+          setCountry(fetchRandomCountry(countries));
+          setStarted(false);
+        }
       }
-      if (time <= 11 * 1000) {
+      if (time <= 11 * 1000 && setCountry) {
         setColor("text-red-600");
       }
     }, 1000);
   }, [time]);
 
+  let formattedTime: string = setCountry
+    ? formatTime(time)
+    : Math.floor(time / 1000).toString();
   return (
-    <div className="text-right relative -z-1 text-sm">
-      <h3 className={`font-semibold ${color}`}>{formatTime(time)}</h3>
+    <div
+      className={
+        setCountry
+          ? "text-right relative -z-1 text-sm"
+          : "text-center relative -z-1 text-sm"
+      }
+    >
+      <h3 className={`font-semibold ${color}`}>{formattedTime}</h3>
     </div>
   );
 }

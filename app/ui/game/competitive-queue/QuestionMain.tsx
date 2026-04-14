@@ -8,8 +8,8 @@ import Results from "../Results";
 import NextQuestion from "../NextQuestion";
 import Score from "../Score";
 import EndMain from "../EndMain";
-import EndButton from "../EndButton";
 import Timer from "./Timer";
+import CountDown from "./CountDown";
 
 export default function QuestionMain({
   countries,
@@ -23,6 +23,7 @@ export default function QuestionMain({
   const [totalScore, setTotalScore] = useState(0);
   const [curScore, setCurScore] = useState(100);
   const [ended, setEnded] = useState(false);
+  const [started, setStarted] = useState(false);
 
   useEffect(() => {
     if (guessed === "correct") {
@@ -41,7 +42,9 @@ export default function QuestionMain({
 
   return (
     <div className="mt-15 mx-10 md:flex">
-      {!ended && (
+      {!started && !ended && <CountDown setStarted={setStarted} />}
+
+      {!ended && started && (
         <div className="md:w-1/2">
           <div className="flex w-full justify-between">
             <Score
@@ -50,17 +53,18 @@ export default function QuestionMain({
               curScore={curScore}
             />
             <Timer
-              duration={15 * 1000}
+              duration={60 * 1000}
               setEnded={setEnded}
-              setScore={setTotalScore}
               countries={countries}
               setCountry={setCountry}
+              setStarted={setStarted}
             />
           </div>
           <CountryImage src={country.image} guessed={guessed} />
         </div>
       )}
-      {!ended && (
+
+      {!ended && started && (
         <div className="md:w-1/2">
           <h1 className="text-3xl font-semibold">guess the country!</h1>
           <InputGuess
@@ -83,7 +87,13 @@ export default function QuestionMain({
           />
         </div>
       )}
-      {ended && <EndMain score={totalScore} setEnded={setEnded} />}
+      {ended && (
+        <EndMain
+          score={totalScore}
+          setEnded={setEnded}
+          setScore={setTotalScore}
+        />
+      )}
     </div>
   );
 }
