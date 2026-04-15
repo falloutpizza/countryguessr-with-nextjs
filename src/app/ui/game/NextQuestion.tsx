@@ -1,4 +1,4 @@
-import fetchRandomCountry from "../../utils/fetchRandomCountry";
+import fetchRandomCountry from "../../../helpers/utils/fetchRandomCountry";
 
 export default function NextQuestion({
   setCountry,

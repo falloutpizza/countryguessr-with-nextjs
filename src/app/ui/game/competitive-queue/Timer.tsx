@@ -1,5 +1,5 @@
 "use client";
-import fetchRandomCountry from "@/app/utils/fetchRandomCountry";
+import fetchRandomCountry from "../../../../helpers/utils/fetchRandomCountry";
 
 import { useState, useEffect } from "react";
 

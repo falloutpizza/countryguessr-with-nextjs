@@ -1,4 +1,4 @@
-import fetchRandomCountry from "@/app/utils/fetchRandomCountry";
+import fetchRandomCountry from "../../../helpers/utils/fetchRandomCountry";
 
 export default function EndButton({
   setEnded,

@@ -1,5 +1,5 @@
-import fetchCountries from "../../services/fetchCountries";
-import fetchRandomCountry from "@/app/utils/fetchRandomCountry";
+import fetchCountries from "../../../helpers/services/fetchCountries";
+import fetchRandomCountry from "../../../helpers/utils/fetchRandomCountry";
 
 import QuestionMain from "../../ui/game/the-og-countryguessr/QuestionMain";
 
