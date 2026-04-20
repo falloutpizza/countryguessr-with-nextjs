@@ -4,7 +4,7 @@ import { useActionState } from "react";
 import { SignupFormSchema, FormState } from "@/src/lib/schemas";
 import * as z from "zod";
 
-import SignupForm from "../ui/signup/SignupForm";
+import SignupForm from "../ui/users/SignupForm";
 
 async function signup(state: FormState, formData: FormData) {
   const validatedFields = SignupFormSchema.safeParse({
