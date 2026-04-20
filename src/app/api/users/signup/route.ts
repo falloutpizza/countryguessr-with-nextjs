@@ -6,7 +6,7 @@ import sendEmail from "@/src/helpers/services/mailer"
 
 connect()
 
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest) {
     try {
         const { username, email, password } = await req.json()
 
