@@ -5,16 +5,19 @@ import User from "@/src/models/userSchema";
 export default async function sendEmail({ email, emailType, userId }) {
   try {
     const token = uuid();
+    let text;
     if (emailType === "VERIFY") {
       await User.findByIdAndUpdate(userId, {
         verifyToken: token,
         verifyTokenExpiry: Date.now() + 6 * 60 * 60 * 1000,
       });
+      text = `<p>thanks for signing up for countryguessr dot com! to verify your account, <a href = "${process.env.DOMAIN}/verifyemail?token=${token}">click here</a> or copy paste the following link into your browser: <br> ${process.env.DOMAIN}/verifyemail?token=${token}</p>`;
     } else if (emailType === "RESET") {
       await User.findByIdAndUpdate(userId, {
         forgotPasswordToken: token,
         forgotPasswordExpiry: Date.now() + 6 * 60 * 60 * 1000,
       });
+      text = `<p>to reset your password, <a href = "${process.env.DOMAIN}/resetpassword?token=${token}">click here</a> or copy paste the following link into your browser: <br> ${process.env.DOMAIN}/resetpassword?token=${token}</p>`;
     }
 
     let transport = nodemailer.createTransport({
@@ -31,7 +34,7 @@ export default async function sendEmail({ email, emailType, userId }) {
       to: email,
       subject:
         emailType === "VERIFY" ? "Verify your email" : "Reset your password",
-      html: token, //change text lol
+      html: text,
     };
 
     const mailResponse = await transport.sendMail(mailOption);
