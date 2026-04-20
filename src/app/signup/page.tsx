@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, SubmitEvent } from "react";
 import { SignupFormSchema, FormState } from "@/src/lib/schemas";
 import * as z from "zod";
 
@@ -16,6 +16,13 @@ async function signup(state: FormState, formData: FormData) {
       errors: z.treeifyError(validatedFields.error).properties,
     };
   }
+  const response = await fetch("/api/users/signup", {
+    method: "POST",
+    body: JSON.stringify(validatedFields.data),
+  });
+
+  const data = await response.json();
+  console.log(data);
 }
 
 export default function SignupForm() {
