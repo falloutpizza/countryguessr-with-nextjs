@@ -31,14 +31,12 @@ export default async function sendEmail({ email, emailType, userId }) {
       to: email,
       subject:
         emailType === "VERIFY" ? "Verify your email" : "Reset your password",
-      html: "<p>Hello world?</p>", //change text lol
+      html: token, //change text lol
     };
 
-    console.log("Message sent: %s", info.messageId);
-
-    const mailResponse = await transporter.sendMail(mailOption);
+    const mailResponse = await transport.sendMail(mailOption);
     return mailResponse;
   } catch (e) {
-    throw new Error(error.message);
+    throw new Error(e.message);
   }
 }
