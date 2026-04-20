@@ -1,7 +1,6 @@
 import nodemailer from "nodemailer";
 import { v4 as uuid } from "uuid";
 import User from "@/src/models/userSchema";
-const { MailtrapTransport } = require("mailtrap");
 
 export default async function sendEmail({ email, emailType, userId }) {
   try {
@@ -18,11 +17,14 @@ export default async function sendEmail({ email, emailType, userId }) {
       });
     }
 
-    const transporter = nodemailer.createTransport(
-      MailtrapTransport({
-        token: "847c75cef929e471dd908425312124c0", //put in env variable
-      }),
-    );
+    let transport = nodemailer.createTransport({
+      host: "sandbox.smtp.mailtrap.io",
+      port: 2525,
+      auth: {
+        user: "9d2f1469435e88",
+        pass: "29925b58df4f89",
+      },
+    });
 
     const mailOption = {
       from: "piizzzzaa123@gmail.com",
