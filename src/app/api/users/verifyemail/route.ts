@@ -19,6 +19,8 @@ export async function POST(req: NextRequest){
 
         console.log(user)
 
+        await user.save()
+
         return NextResponse.json({message:"user is verified now bro", success:true})
 
     }catch(e:any){
