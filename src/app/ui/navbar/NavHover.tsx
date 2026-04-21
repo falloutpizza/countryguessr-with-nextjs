@@ -1,12 +1,16 @@
 import LoginLink from "./login/LoginLink";
 import GamemodeLink from "./gamemodes/GamemodeLink";
+import UserAccLink from "./user/UserAccLink";
+import LogoutLink from "./login/LogoutLink";
 
 export default function NavHover({
   hovered,
   setHovered,
+  loggedIn,
 }: {
   hovered: string;
   setHovered: (h: string) => void;
+  loggedIn: boolean;
 }) {
   //setting bg color
   let bgColor: string = "bg-orange-400";
@@ -22,10 +26,16 @@ export default function NavHover({
 
   return (
     <div className={classes} onMouseEnter={() => setHovered(hovered)}>
-      {hovered === "login" && (
+      {hovered === "login" && !loggedIn && (
         <>
           <LoginLink linkName="login" />
           <LoginLink linkName="sign up" />
+        </>
+      )}
+      {hovered === "myaccount" && loggedIn && (
+        <>
+          <UserAccLink linkName="my account" />
+          <LogoutLink />
         </>
       )}
       {hovered === "gamemodes" && (

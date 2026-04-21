@@ -1,4 +1,5 @@
 import { useRouter } from "next/navigation";
+import RightArrow from "../../globals/icons/RightArrow";
 
 export default function LogoutLink() {
   const router = useRouter();
@@ -10,12 +11,13 @@ export default function LogoutLink() {
     router.push("/login");
   }
   return (
-    <form action={handleClick} className="hover:underline sm:ml-5 m-2 ">
+    <form action={handleClick}>
       <input
         type="submit"
-        className="hover:underline cursor-pointer"
+        className="hover:underline cursor-pointer sm:ml-5 m-2 sm:text-sm text-xs"
         value="logout"
       />
+      <RightArrow />
     </form>
   );
 }

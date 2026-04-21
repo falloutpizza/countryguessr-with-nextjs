@@ -6,6 +6,8 @@ import DotCircle from "../globals/icons/DotCircle";
 import XCircle from "../globals/icons/XCircle";
 import LoginLink from "./login/LoginLink";
 import GamemodeLink from "./gamemodes/GamemodeLink";
+import UserAccLink from "./user/UserAccLink";
+import LogoutLink from "./login/LogoutLink";
 
 export default function NavSmall({ loggedIn }: { loggedIn: boolean }) {
   const [opened, setOpened] = useState(false);
@@ -25,6 +27,8 @@ export default function NavSmall({ loggedIn }: { loggedIn: boolean }) {
         >
           {!loggedIn && <LoginLink linkName="login" />}
           {!loggedIn && <LoginLink linkName="sign up" />}
+          {loggedIn && <UserAccLink linkName="my account" />}
+          {loggedIn && <LogoutLink />}
         </div>
         <div
           className={

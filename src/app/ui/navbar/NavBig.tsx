@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 
-import LogoutLink from "./login/LogoutLink";
 import NavHover from "./NavHover";
 
 export default function NavBig({ loggedIn }: { loggedIn: boolean }) {
@@ -22,7 +21,13 @@ export default function NavBig({ loggedIn }: { loggedIn: boolean }) {
             login/sign up
           </a>
         ) : (
-          <LogoutLink />
+          <a
+            href="/myaccount"
+            onMouseEnter={() => setHovered("myaccount")}
+            className="hover:underline sm:ml-5 m-2 "
+          >
+            my account
+          </a>
         )}
 
         <a
@@ -33,7 +38,7 @@ export default function NavBig({ loggedIn }: { loggedIn: boolean }) {
           gamemodes
         </a>
       </div>
-      <NavHover hovered={hovered} setHovered={setHovered} />
+      <NavHover hovered={hovered} setHovered={setHovered} loggedIn={loggedIn} />
     </div>
   );
 }
