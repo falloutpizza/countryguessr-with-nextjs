@@ -7,9 +7,12 @@ export default function LoginLink({
   onMouseEnter?: () => void;
   linkName: string;
 }) {
+  if (linkName !== "login") {
+    linkName = "signup";
+  }
   return (
     <a
-      href=""
+      href={`/${linkName}`}
       className="hover:underline sm:ml-5 m-2 "
       onMouseEnter={onMouseEnter}
     >

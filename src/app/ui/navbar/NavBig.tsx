@@ -14,10 +14,13 @@ export default function NavBig() {
       onMouseLeave={() => setHovered("")}
     >
       <div className="flex">
-        <LoginLink
+        <a
+          href="/signup"
           onMouseEnter={() => setHovered("login")}
-          linkName="login/sign up"
-        />
+          className="hover:underline sm:ml-5 m-2 "
+        >
+          login/sign up
+        </a>
         <a
           href={"/gamemodes"}
           className="hover:underline sm:ml-5 m-2 "

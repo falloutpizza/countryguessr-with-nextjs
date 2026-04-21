@@ -7,24 +7,20 @@ import * as z from "zod";
 import SignupForm from "../ui/users/SignupForm";
 
 async function signup(state: FormState, formData: FormData) {
-  const validatedFields = SignupFormSchema.safeParse({
-    username: formData.get("username"),
-    email: formData.get("email"),
-    password: formData.get("password"),
-  });
-
-  if (!validatedFields.success) {
-    return {
-      errors: z.treeifyError(validatedFields.error).properties,
-    };
-  }
   const response = await fetch("/api/users/signup", {
     method: "POST",
-    body: JSON.stringify(validatedFields.data),
+    body: JSON.stringify({
+      username: formData.get("username"),
+      password: formData.get("password"),
+      email: formData.get("email"),
+    }),
   });
-
   const data = await response.json();
-  console.log(data);
+
+  if (!data.success) {
+    console.log(data);
+    return data;
+  }
 }
 
 export default function SignupPage() {
