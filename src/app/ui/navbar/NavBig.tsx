@@ -2,20 +2,18 @@
 
 import { useState } from "react";
 
-import LoginLink from "./login/LoginLink";
-import GamemodeLink from "./gamemodes/GamemodeLink";
+import LogoutLink from "./login/LogoutLink";
 import NavHover from "./NavHover";
 
 export default function NavBig({ loggedIn }: { loggedIn: boolean }) {
   const [hovered, setHovered] = useState("");
-  const [userLoggedIn, setUserLoggedIn] = useState(loggedIn);
   return (
     <div
       className="hidden sm:block m-3 mt-1"
       onMouseLeave={() => setHovered("")}
     >
       <div className="flex">
-        {!userLoggedIn && (
+        {!loggedIn ? (
           <a
             href="/signup"
             onMouseEnter={() => setHovered("login")}
@@ -23,7 +21,10 @@ export default function NavBig({ loggedIn }: { loggedIn: boolean }) {
           >
             login/sign up
           </a>
+        ) : (
+          <LogoutLink />
         )}
+
         <a
           href={"/gamemodes"}
           className="hover:underline sm:ml-5 m-2 "

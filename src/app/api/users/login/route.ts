@@ -11,7 +11,6 @@ connect();
 export async function POST(req: NextRequest) {
   try {
     const { username, password } = await req.json();
-    console.log(username, password);
     const validatedFields = LoginFormSchema.safeParse({
       username: username,
       password: password,

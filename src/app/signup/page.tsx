@@ -1,8 +1,8 @@
 "use client";
 
 import { useActionState } from "react";
-import { SignupFormSchema, FormState } from "@/src/lib/schemas";
-import * as z from "zod";
+import { FormState } from "@/src/lib/schemas";
+import { redirect } from "next/navigation";
 
 import SignupForm from "../ui/users/SignupForm";
 
@@ -18,9 +18,10 @@ async function signup(state: FormState, formData: FormData) {
   const data = await response.json();
 
   if (!data.success) {
-    console.log(data);
     return data;
   }
+
+  redirect("/");
 }
 
 export default function SignupPage() {
