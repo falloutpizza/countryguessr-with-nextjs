@@ -7,8 +7,9 @@ import XCircle from "../globals/icons/XCircle";
 import LoginLink from "./login/LoginLink";
 import GamemodeLink from "./gamemodes/GamemodeLink";
 
-export default function NavSmall() {
+export default function NavSmall({ loggedIn }: { loggedIn: boolean }) {
   const [opened, setOpened] = useState(false);
+  const [userLoggedIn, setUserLoggedIn] = useState(loggedIn);
   return (
     <div className="sm:hidden block m-3 text-left">
       <div className="cursor-pointer" onClick={() => setOpened(!opened)}>
@@ -23,8 +24,8 @@ export default function NavSmall() {
               : "bg-orange-400 flex flex-col rounded-t-2xl invisible transition-all duration-50"
           }
         >
-          <LoginLink linkName="login" />
-          <LoginLink linkName="sign up" />
+          {!userLoggedIn && <LoginLink linkName="login" />}
+          {!userLoggedIn && <LoginLink linkName="sign up" />}
         </div>
         <div
           className={

@@ -1,10 +1,11 @@
 import { connect } from "@/src/dbConfig/dbConfig";
 import { NextRequest, NextResponse } from "next/server";
-import { SignupFormSchema, FormState } from "@/src/lib/schemas";
+import { SignupFormSchema } from "@/src/lib/schemas";
 import * as z from "zod";
 import User from "@/src/models/userSchema";
 import bcrypt from "bcryptjs";
 import sendEmail from "@/src/helpers/services/mailer";
+import jwt from "jsonwebtoken";
 
 connect();
 
@@ -40,14 +41,23 @@ export async function POST(req: NextRequest) {
     const newUser = new User({ username, email, password: hashedPassword });
     const savedUser = await newUser.save();
 
+    //making token for user session
+    const tokenPayload = { id: savedUser._id };
+    const token = jwt.sign(tokenPayload, process.env.TOKEN_SECRET!, {
+      expiresIn: "1d",
+    });
+
     //send verification mail
     sendEmail({ email, emailType: "VERIFY", userId: savedUser._id });
 
-    return NextResponse.json({
+    const res = NextResponse.json({
       message: "successfully signed in bro",
       success: true,
-      savedUser,
     });
+
+    res.cookies.set("user", token, { httpOnly: true });
+
+    return res;
   } catch (e: any) {
     return NextResponse.json({ error: e.message, status: 500 });
   }
