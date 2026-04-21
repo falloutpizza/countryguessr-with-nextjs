@@ -13,10 +13,13 @@ export default async function sendEmail({ email, emailType, userId }) {
       });
       text = `<p>thanks for signing up for countryguessr dot com! to verify your account, <a href = "${process.env.DOMAIN}/verify-email?token=${token}">click here</a> or copy paste the following link into your browser: <br> ${process.env.DOMAIN}/verify-email?token=${token}</p>`;
     } else if (emailType === "RESET") {
-      await User.findByIdAndUpdate(userId, {
-        forgotPasswordToken: token,
-        forgotPasswordExpiry: Date.now() + 6 * 60 * 60 * 1000,
-      });
+      await User.findOneAndUpdate(
+        { email },
+        {
+          forgotPasswordToken: token,
+          forgotPasswordExpiry: Date.now() + 6 * 60 * 60 * 1000,
+        },
+      );
       text = `<p>to reset your password, <a href = "${process.env.DOMAIN}/reset-password?token=${token}">click here</a> or copy paste the following link into your browser: <br> ${process.env.DOMAIN}/reset-password?token=${token}</p>`;
     }
 

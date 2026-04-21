@@ -1,6 +1,7 @@
 "use client";
 
 import FormInput from "./FormInput";
+import ForgotPassword from "./ForgotPassword";
 
 export default function LoginForm({
   action,
@@ -33,6 +34,7 @@ export default function LoginForm({
           login!
         </button>
       </form>
+      <ForgotPassword />
     </div>
   );
 }

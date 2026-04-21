@@ -4,7 +4,7 @@ import { useActionState } from "react";
 import { LoginFormState } from "@/src/lib/schemas";
 import { redirect } from "next/navigation";
 
-import LoginForm from "../ui/users/LoginForm";
+import LoginForm from "../ui/auth/LoginForm";
 
 async function login(state: LoginFormState, formData: FormData) {
   const response = await fetch("/api/users/login", {
