@@ -17,8 +17,26 @@ export const SignupFormSchema = z.object({
 export type FormState =
   | {
       errors?: {
-        username?:{ errors: string[] };
+        username?: { errors: string[] };
         email?: { errors: string[] };
+        password?: { errors: string[] };
+      };
+      message?: string;
+    }
+  | undefined;
+
+export const LoginFormSchema = z.object({
+  username: z
+    .string()
+    .min(2, { error: "username must be at least 2 characters long!" })
+    .trim(),
+  password: z.string().trim(),
+});
+
+export type LoginFormState =
+  | {
+      errors?: {
+        username?: { errors: string[] };
         password?: { errors: string[] };
       };
       message?: string;
