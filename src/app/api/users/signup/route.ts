@@ -38,11 +38,24 @@ export async function POST(req: NextRequest) {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    const newUser = new User({ username, email, password: hashedPassword });
+    const newUser = new User({
+      username,
+      email,
+      password: hashedPassword,
+      ogHs: 0,
+      hardHs: 0,
+      compRank: undefined,
+    });
     const savedUser = await newUser.save();
 
     //making token for user session
-    const tokenPayload = { id: savedUser._id };
+    const tokenPayload = {
+      id: savedUser._id,
+      username: savedUser.username,
+      ogHs: savedUser.ogHs,
+      hardHs: savedUser.hardHs,
+      compRank: savedUser.compRank,
+    };
     const token = jwt.sign(tokenPayload, process.env.TOKEN_SECRET!, {
       expiresIn: "1d",
     });

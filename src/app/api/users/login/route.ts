@@ -39,7 +39,13 @@ export async function POST(req: NextRequest) {
     }
 
     //making token for user session
-    const tokenPayload = { id: user._id };
+    const tokenPayload = {
+      id: user._id,
+      username: user.username,
+      ogHs: user.ogHs,
+      hardHs: user.hardHs,
+      compRank: user.compRank,
+    };
     const token = jwt.sign(tokenPayload, process.env.TOKEN_SECRET!, {
       expiresIn: "1d",
     });
