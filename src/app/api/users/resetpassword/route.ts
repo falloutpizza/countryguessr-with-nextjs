@@ -1,5 +1,7 @@
 import { connect } from "@/src/dbConfig/dbConfig";
 import { NextRequest, NextResponse } from "next/server";
+import { ResetPasswordSchema } from "@/src/lib/schemas";
+import z from "zod";
 import User from "@/src/models/userSchema";
 import bcrypt from "bcryptjs";
 
@@ -8,15 +10,27 @@ connect();
 export async function POST(req: NextRequest) {
   try {
     const { token, newPassword } = await req.json();
+    const validatedFields = ResetPasswordSchema.safeParse({
+      password: newPassword,
+    });
+
+    if (!validatedFields.success) {
+      return NextResponse.json({
+        success: false,
+        errors: z.treeifyError(validatedFields.error).properties,
+        status: 400,
+      });
+    }
+
     const user = await User.findOne({
-      forgetPasswordToken: token,
-      forgetPasswordTokenExpiry: { $gt: Date.now() },
+      forgotPasswordToken: token,
+      forgotPasswordExpiry: { $gt: Date.now() },
     });
 
     if (!user) {
       return NextResponse.json({
         error: "invalid or expired password reset link",
-        status: 400,
+        status: 404,
         success: false,
       });
     }

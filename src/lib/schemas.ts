@@ -42,3 +42,21 @@ export type LoginFormState =
       message?: string;
     }
   | undefined;
+
+export const ResetPasswordSchema = z.object({
+  password: z
+    .string()
+    .min(8, { error: "be at least 8 characters long" })
+    .regex(/[a-zA-Z]/, { error: "contain at least one letter" })
+    .regex(/[0-9]/, { error: "contain at least one number" })
+    .trim(),
+});
+
+export type ResetPasswordState =
+  | {
+      errors?: {
+        password?: { errors: string[] };
+      };
+      message?: string;
+    }
+  | undefined;
