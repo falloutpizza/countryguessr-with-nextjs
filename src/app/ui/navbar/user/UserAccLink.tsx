@@ -10,7 +10,7 @@ export default function UserAccLink({
   const link = linkName.replaceAll(" ", "-");
   return (
     <a
-      href={`/${linkName}`}
+      href={`/${link}`}
       className="hover:underline sm:ml-5 m-2 "
       onMouseEnter={onMouseEnter}
     >
