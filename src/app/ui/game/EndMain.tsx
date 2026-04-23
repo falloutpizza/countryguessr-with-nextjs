@@ -21,7 +21,15 @@ export default function EndMain({
       oldHs = user[gameMode];
       if (score > oldHs) {
         text = "congrats, you beat your old high score!!";
-        //send post request to database here
+        async function updateScore() {
+          const response = await fetch("/api/users/updatescore", {
+            method: "POST",
+            body: JSON.stringify({ score, gameMode, userId: user.id }),
+          });
+          const data = await response.json();
+          console.log(data); // REMOVE
+        }
+        updateScore();
       } else {
         text = "sadly, you could not beat your old high score :(";
       }
