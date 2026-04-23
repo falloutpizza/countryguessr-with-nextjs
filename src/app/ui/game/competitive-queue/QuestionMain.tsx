@@ -14,9 +14,11 @@ import CountDown from "./CountDown";
 export default function QuestionMain({
   countries,
   initCountry,
+  user,
 }: {
   countries: Array<object>;
   initCountry: any;
+  user: any;
 }) {
   const [country, setCountry] = useState(initCountry);
   const [guessed, setGuessed] = useState("false");
@@ -92,6 +94,8 @@ export default function QuestionMain({
           score={totalScore}
           setEnded={setEnded}
           setScore={setTotalScore}
+          gameMode="compRank"
+          user={user}
         />
       )}
     </div>
