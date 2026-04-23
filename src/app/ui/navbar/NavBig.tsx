@@ -22,7 +22,7 @@ export default function NavBig({ loggedIn }: { loggedIn: boolean }) {
           </a>
         ) : (
           <a
-            href="/myaccount"
+            href="/my-account"
             onMouseEnter={() => setHovered("myaccount")}
             className="hover:underline sm:ml-5 m-2 "
           >

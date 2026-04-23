@@ -27,7 +27,6 @@ export default function EndMain({
             body: JSON.stringify({ score, gameMode, userId: user.id }),
           });
           const data = await response.json();
-          console.log(data); // REMOVE
         }
         updateScore();
       } else {
