@@ -8,6 +8,6 @@ const playerSchema = new mongoose.Schema({
 });
 
 const Player =
-  mongoose.models.playerSchema || mongoose.model("players", playerSchema);
+  mongoose.models.players || mongoose.model("players", playerSchema);
 
 export default Player;

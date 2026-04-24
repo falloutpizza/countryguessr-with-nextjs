@@ -36,26 +36,26 @@ export async function POST(req: NextRequest) {
     }
 
     if (gameMode === "compHs") {
-      /*       const player = await Player.findById(userId);
+      let player = await Player.findOne({ userId });
       if (!player) {
-        const newPlayer = new Player({
+        player = new Player({
           username: user.username,
           userId: user._id,
           compHs: score,
           compRank: "10+",
         });
-        await newPlayer.save();
       } else {
         player.compHs = score;
-        await player.save();
       }
       //RE-SORT TOP 10 PLAYERS AND GIVE THEM RANKS
       const topTen = await Player.find()
-        .sort({ compHs: "asc", _id: "asc" })
+        .sort({ compHs: "desc", _id: "asc" })
         .limit(10)
         .exec();
-      console.log(topTen);
- */
+      topTen.forEach((player, index) => {
+        if (player.userId === userId) player.compRank = index.toString();
+      });
+      await player.save();
     }
 
     await user.save();
