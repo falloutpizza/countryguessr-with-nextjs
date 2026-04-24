@@ -44,6 +44,7 @@ export async function POST(req: NextRequest) {
       username: user.username,
       ogHs: user.ogHs,
       hardHs: user.hardHs,
+      compHs: user.compHs,
       compRank: user.compRank,
     };
     const token = jwt.sign(tokenPayload, process.env.TOKEN_SECRET!, {
