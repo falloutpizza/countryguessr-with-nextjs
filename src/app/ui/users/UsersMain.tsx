@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import jwt from "jsonwebtoken";
 
 import HighScore from "./HighScore";
+import DeleteAccount from "./DeleteAccount";
 
 export default async function UsersMain() {
   const cookieStore = await cookies();
@@ -12,7 +13,7 @@ export default async function UsersMain() {
   }
 
   return (
-    <div className="bg-white w-9/10 border-1 border-black rounded-2xl mx-auto text-left mt-20 h-1/2">
+    <div className="bg-white w-9/10 border-1 border-black rounded-2xl mx-auto text-left mt-20 h-7/10">
       <h1 className="text-3xl font-semibold sm:ml-5 m-2 mt-5">
         {verifiedUser.username}'s account!
       </h1>
@@ -31,6 +32,7 @@ export default async function UsersMain() {
           rank={verifiedUser.compRank}
         />
       </div>
+      <DeleteAccount />
     </div>
   );
 }
