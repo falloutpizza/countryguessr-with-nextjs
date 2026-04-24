@@ -21,6 +21,8 @@ export async function POST(req: NextRequest) {
       user.ogHs = score;
     } else if (gameMode === "hardHs") {
       user.hardHs = score;
+    } else if (gameMode === "compHs") {
+      user.compHs = score;
     }
 
     await user.save();

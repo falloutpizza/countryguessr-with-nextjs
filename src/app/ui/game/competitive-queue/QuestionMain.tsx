@@ -55,7 +55,7 @@ export default function QuestionMain({
               curScore={curScore}
             />
             <Timer
-              duration={60 * 1000}
+              duration={30 * 1000}
               setEnded={setEnded}
               countries={countries}
               setCountry={setCountry}
@@ -94,7 +94,7 @@ export default function QuestionMain({
           score={totalScore}
           setEnded={setEnded}
           setScore={setTotalScore}
-          gameMode="compRank"
+          gameMode="compHs"
           user={user}
         />
       )}

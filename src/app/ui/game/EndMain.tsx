@@ -17,21 +17,20 @@ export default function EndMain({
   let text: string = "";
   if (user) {
     let oldHs;
-    if (gameMode == "ogHs" || gameMode == "hardHs") {
-      oldHs = user[gameMode];
-      if (score > oldHs) {
-        text = "congrats, you beat your old high score!!";
-        async function updateScore() {
-          const response = await fetch("/api/users/updatescore", {
-            method: "POST",
-            body: JSON.stringify({ score, gameMode, userId: user.id }),
-          });
-          const data = await response.json();
-        }
-        updateScore();
-      } else {
-        text = "sadly, you could not beat your old high score :(";
+    oldHs = user[gameMode];
+    console.log(oldHs, score);
+    if (score > oldHs) {
+      text = "congrats, you beat your old high score!!";
+      async function updateScore() {
+        const response = await fetch("/api/users/updatescore", {
+          method: "POST",
+          body: JSON.stringify({ score, gameMode, userId: user.id }),
+        });
+        await response.json();
       }
+      updateScore();
+    } else {
+      text = "sadly, you could not beat your old high score :(";
     }
   } else {
     text = `your final score was: ${score}`;
@@ -41,6 +40,12 @@ export default function EndMain({
     <div className="m-auto mt-20">
       <h1 className="text-3xl font-semibold">{text}</h1>
       {user && <h2 className="text-3xl">your final score was: {score}</h2>}
+      {!user && (
+        <h2 className="text-3xl">
+          log in to save your score and be placed on the leaderboard in
+          competitive mode!
+        </h2>
+      )}
       <h2 className="text-2xl">we hope you enjoyed playing!</h2>
       <button
         className="bg-orange-400 h-fit m-2 mt-4 px-2 py-1 border-1 border-black rounded-md cursor-pointer"

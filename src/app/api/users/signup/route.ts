@@ -44,6 +44,7 @@ export async function POST(req: NextRequest) {
       password: hashedPassword,
       ogHs: 0,
       hardHs: 0,
+      compHs: 0,
       compRank: undefined,
     });
     const savedUser = await newUser.save();
@@ -54,6 +55,7 @@ export async function POST(req: NextRequest) {
       username: savedUser.username,
       ogHs: savedUser.ogHs,
       hardHs: savedUser.hardHs,
+      compHs: savedUser.compHs,
       compRank: savedUser.compRank,
     };
     const token = jwt.sign(tokenPayload, process.env.TOKEN_SECRET!, {

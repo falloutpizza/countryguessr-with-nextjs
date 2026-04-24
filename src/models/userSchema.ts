@@ -25,6 +25,7 @@ const userSchema = new mongoose.Schema({
   verifyTokenExpiry: Date,
   ogHs: Number,
   hardHs: Number,
+  compHs: Number,
   compRank: Number,
 });
 
