@@ -1,6 +1,8 @@
-import nodemailer from "nodemailer";
+//import nodemailer from "nodemailer";
 import { v4 as uuid } from "uuid";
 import User from "@/src/models/userSchema";
+const Nodemailer = require("nodemailer");
+const { MailtrapTransport } = require("mailtrap");
 
 export default async function sendEmail({ email, emailType, userId }) {
   try {
@@ -23,7 +25,33 @@ export default async function sendEmail({ email, emailType, userId }) {
       text = `<p>to reset your password, <a href = "${process.env.DOMAIN}/reset-password?token=${token}">click here</a> or copy paste the following link into your browser: <br> ${process.env.DOMAIN}/reset-password?token=${token}</p>`;
     }
 
-    let transport = nodemailer.createTransport({
+    const TOKEN = process.env.EMAIL_SECRET;
+
+    const transport = Nodemailer.createTransport(
+      MailtrapTransport({
+        token: TOKEN,
+      }),
+    );
+
+    const sender = {
+      address: "hello@demomailtrap.co",
+      name: "Countryguessr",
+    };
+    const recipients = [email];
+
+    transport
+      .sendMail({
+        from: sender,
+        to: recipients,
+        subject:
+          emailType === "VERIFY" ? "Verify your email" : "Reset your password",
+        text: text,
+        category: "",
+      })
+      .then(console.log, console.error);
+
+    //MAILER USED IN MAILTRAP SANDBOX
+    /*     let transport = nodemailer.createTransport({
       host: "sandbox.smtp.mailtrap.io",
       port: 2525,
       auth: {
@@ -41,7 +69,7 @@ export default async function sendEmail({ email, emailType, userId }) {
     };
 
     const mailResponse = await transport.sendMail(mailOption);
-    return mailResponse;
+    return mailResponse; */
   } catch (e) {
     throw new Error(e.message);
   }
