@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
       ogHs: 0,
       hardHs: 0,
       compHs: 0,
-      compRank: undefined,
+      compRank: "10+",
     });
     const savedUser = await newUser.save();
 

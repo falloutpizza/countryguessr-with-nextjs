@@ -19,6 +19,31 @@ export async function POST(req: NextRequest) {
       });
     }
 
+    if (gameMode === "compHs") {
+      let player = await Player.findOne({ userId });
+      if (!player) {
+        player = new Player({
+          username: user.username,
+          userId: user._id,
+          compHs: score,
+        });
+      } else {
+        player.compHs = score;
+      }
+      //RE-SORT TOP 10 PLAYERS AND GIVE THEM RANKS
+      await player.save();
+      const topTen = await Player.find()
+        .sort({ compHs: "desc", _id: "asc" })
+        .limit(10)
+        .exec();
+      //UPDATE RANKS OF TOP 10 PLAYERS AFTER ADDING NEW PLAYER
+      topTen.forEach(async (player, index) => {
+        await User.findByIdAndUpdate(player.userId, {
+          compRank: (index + 1).toString(),
+        });
+      });
+    }
+
     user[gameMode] = score;
     const res = NextResponse.json({
       message: "user's high score has been updated",
@@ -31,31 +56,11 @@ export async function POST(req: NextRequest) {
         process.env.TOKEN_SECRET!,
       );
       verifiedCookie[gameMode] = score;
+      if (gameMode === "compHs") {
+        verifiedCookie.compRank = user.compRank;
+      }
       const updatedCookie = jwt.sign(verifiedCookie, process.env.TOKEN_SECRET!);
       res.cookies.set("user", updatedCookie, { httpOnly: true });
-    }
-
-    if (gameMode === "compHs") {
-      let player = await Player.findOne({ userId });
-      if (!player) {
-        player = new Player({
-          username: user.username,
-          userId: user._id,
-          compHs: score,
-          compRank: "10+",
-        });
-      } else {
-        player.compHs = score;
-      }
-      //RE-SORT TOP 10 PLAYERS AND GIVE THEM RANKS
-      const topTen = await Player.find()
-        .sort({ compHs: "desc", _id: "asc" })
-        .limit(10)
-        .exec();
-      topTen.forEach((player, index) => {
-        if (player.userId === userId) player.compRank = index.toString();
-      });
-      await player.save();
     }
 
     await user.save();

@@ -22,7 +22,7 @@ export default function EndMain({
     if (score > oldHs) {
       text = "congrats, you beat your old high score!!";
       async function updateScore() {
-        const response = await fetch("/api/users/updatescore", {
+        const response = await fetch("/api/updatescore", {
           method: "POST",
           body: JSON.stringify({ score, gameMode, userId: user.id }),
         });

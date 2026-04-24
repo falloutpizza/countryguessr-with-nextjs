@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
   ogHs: Number,
   hardHs: Number,
   compHs: Number,
-  compRank: Number,
+  compRank: String,
 });
 
 const User = mongoose.models.users || mongoose.model("users", userSchema);
