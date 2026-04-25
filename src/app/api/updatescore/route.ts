@@ -45,10 +45,7 @@ export async function POST(req: NextRequest) {
     }
 
     user[gameMode] = score;
-    const res = NextResponse.json({
-      message: "user's high score has been updated",
-      success: true,
-    });
+    let res: any;
     const userCookie = req.cookies.get("user")?.value;
     if (userCookie) {
       const verifiedCookie: any = jwt.verify(
@@ -60,9 +57,19 @@ export async function POST(req: NextRequest) {
         verifiedCookie.compRank = user.compRank;
       }
       const updatedCookie = jwt.sign(verifiedCookie, process.env.TOKEN_SECRET!);
+      res = NextResponse.json({
+        message: "user's high score has been updated",
+        success: true,
+        user: verifiedCookie,
+      });
       res.cookies.set("user", updatedCookie, { httpOnly: true });
+    } else {
+      res = NextResponse.json({
+        message: "user cookie didn't exist",
+        success: false,
+        user: null,
+      });
     }
-
     await user.save();
 
     return res;

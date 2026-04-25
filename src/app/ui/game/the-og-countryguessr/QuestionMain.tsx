@@ -13,11 +13,9 @@ import EndButton from "../EndButton";
 export default function QuestionMain({
   countries,
   initCountry,
-  user,
 }: {
   countries: Array<object>;
   initCountry: any;
-  user: any;
 }) {
   const [country, setCountry] = useState(initCountry);
   const [guessed, setGuessed] = useState("false");
@@ -88,7 +86,6 @@ export default function QuestionMain({
           setEnded={setEnded}
           setScore={setTotalScore}
           gameMode="ogHs"
-          user={user}
         />
       )}
     </div>

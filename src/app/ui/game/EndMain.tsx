@@ -1,24 +1,28 @@
 import Link from "next/link";
+import { useAuthStore } from "@/src/store/authStore";
+import { useState } from "react";
 
 export default function EndMain({
   score,
   gameMode,
   setEnded,
   setScore,
-  user,
 }: {
   gameMode: string;
   score: number;
   setEnded: (e: boolean) => void;
   setScore: (s: number) => void;
-  user: any;
 }) {
   //check if new score > high score
+  const [updated, setUpdated] = useState(0);
+  let user: any = useAuthStore((s) => s.user);
+  let setUser: any = useAuthStore((s) => s.setUser);
+  console.log(user);
+
   let text: string = "";
-  if (user) {
-    let oldHs;
+  if (user && !updated) {
+    let oldHs: any;
     oldHs = user[gameMode];
-    console.log(oldHs, score);
     if (score > oldHs) {
       text = "congrats, you beat your old high score!!";
       async function updateScore() {
@@ -26,14 +30,22 @@ export default function EndMain({
           method: "POST",
           body: JSON.stringify({ score, gameMode, userId: user.id }),
         });
-        await response.json();
+        const data = await response.json();
+        setUser(data.user);
+        setUpdated(oldHs);
       }
       updateScore();
     } else {
       text = "sadly, you could not beat your old high score :(";
     }
-  } else {
+  } else if (!user) {
     text = `your final score was: ${score}`;
+  } else {
+    if (score > updated) {
+      text = "congrats, you beat your old high score!!";
+    } else {
+      text = "sadly, you could not beat your old high score :(";
+    }
   }
 
   return (
