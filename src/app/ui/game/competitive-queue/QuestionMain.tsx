@@ -53,7 +53,7 @@ export default function QuestionMain({
               curScore={curScore}
             />
             <Timer
-              duration={30 * 1000}
+              duration={5*60 * 1000}
               setEnded={setEnded}
               countries={countries}
               setCountry={setCountry}
