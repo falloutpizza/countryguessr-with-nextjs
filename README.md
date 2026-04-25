@@ -2,7 +2,7 @@
 
 countryguessr (with nextjs) is a full-stack Nextjs and TailwindCSS application created to be a simple quiz game. it has many features, such as multiple gamemodes, a live global leaderboard, user login and authentication, high scores, and more. read more about its functionality and technologies used to create it below.
 
-## Features
+## features
 
 countryguessr has the following three gamemodes:
 - a regular quiz mode where a country's silhouette, along with three hints, is shown to the user; based on the number of hints unconvered, and whether the user guessed correctly, points are awarded.
@@ -17,7 +17,7 @@ each user also has an account dashboard, where they can see their statistics for
 
 *note: due to Mailtrap's domain verification policies, emails aren't actually able to be sent as countryguessr is not a verified domain. 
 
-## Technologies
+## technologies
 
 languages:
 this app is almost entirely coded using typescript and javascript, with some css. 
