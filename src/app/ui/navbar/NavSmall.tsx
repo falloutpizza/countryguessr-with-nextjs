@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import DotCircle from "../globals/icons/DotCircle";
 import XCircle from "../globals/icons/XCircle";
+import RightArrow from "../globals/icons/RightArrow";
 import LoginLink from "./login/LoginLink";
 import GamemodeLink from "./gamemodes/GamemodeLink";
 import UserAccLink from "./user/UserAccLink";
@@ -40,6 +41,10 @@ export default function NavSmall({ loggedIn }: { loggedIn: boolean }) {
           <GamemodeLink linkName="the original countryguessr" />
           <GamemodeLink linkName="for the challenge enthusiasts" />
           <GamemodeLink linkName="competitive queue" />
+          <a href={"/leaderboard"} className="hover:underline sm:ml-5 m-2 ">
+            leaderboard
+            <RightArrow />
+          </a>
         </div>
       </div>
     </div>

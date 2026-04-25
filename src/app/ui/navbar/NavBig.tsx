@@ -37,6 +37,14 @@ export default function NavBig({ loggedIn }: { loggedIn: boolean }) {
         >
           gamemodes
         </a>
+
+        <a
+          href={"/leaderboard"}
+          className="hover:underline sm:ml-5 m-2"
+          onMouseEnter={() => setHovered("")}
+        >
+          leaderboard
+        </a>
       </div>
       <NavHover hovered={hovered} setHovered={setHovered} loggedIn={loggedIn} />
     </div>
