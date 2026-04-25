@@ -1,16 +1,22 @@
+"use client";
+
+import { useAuthStore } from "@/src/store/authStore";
+
 import NavBig from "./NavBig";
 import NavSmall from "./NavSmall";
-import { cookies } from "next/headers";
+//import { cookies } from "next/headers";
 
-export default async function Navbar() {
-  const cookieStore = await cookies();
-  const loggedIn = cookieStore.has("user");
+export default function Navbar() {
+  //const cookieStore = await cookies();
+  //const loggedIn = cookieStore.has("user");
+  const user = useAuthStore((s) => s.user);
+
   return (
     <nav className="absolute">
       {/* nav for big screens */}
-      <NavBig loggedIn={loggedIn} />
+      <NavBig loggedIn={user ? true : false} />
       {/* nav for small screens */}
-      <NavSmall loggedIn={loggedIn} />
+      <NavSmall loggedIn={user ? true : false} />
     </nav>
   );
 }
