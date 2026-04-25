@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# countryguessr
 
-## Getting Started
+countryguessr (with nextjs) is a full-stack Nextjs and TailwindCSS application created to be a simple quiz game. it has many features, such as multiple gamemodes, a live global leaderboard, user login and authentication, high scores, and more. read more about its functionality and technologies used to create it below.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+countryguessr has the following three gamemodes:
+- a regular quiz mode where a country's silhouette, along with three hints, is shown to the user; based on the number of hints unconvered, and whether the user guessed correctly, points are awarded.
+- a harder quiz mode, which is the same as the regular mode except the country's silhouette is initially blurred and using hints costs more points.
+- a timed, competitive mode, where users have to gain as many points as possible within five minutes; once the time is up, users can be placed on the leaderboard based on their score.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+users can play each mode without needing to be logged in. if they do wish to create an account, they can easily do so. on account creation, a verify-account email is sent to the user's email*. furthermore, if a user ever forgets their password, a password-reset email* can also be sent to their connected account to reset it.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+users can check out the leaderboard for competitive mode, which displays the top ten scorer's username, score, and ranking.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+each user also has an account dashboard, where they can see their statistics for each gamemodes they have played. they can also delete their account from this dashboard.
 
-## Learn More
+*note: due to Mailtrap's domain verification policies, emails aren't actually able to be sent as countryguessr is not a verified domain. 
 
-To learn more about Next.js, take a look at the following resources:
+## Technologies
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+languages:
+this app is almost entirely coded using typescript and javascript, with some css. 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+packages:
+- NextJs was used for the routing and API fetching.
+- ReactJs was used for the frontend.
+- TailwindCSS was used for styling.
+- Mailtrap and Nodemailer were used for sending emails to users.
+- MongoDB and Mongoose were used for database querying.
+- JsonWebToken was used for signing cookies.
+- Zustand was used for global state management.
+- Zod was used for server-side validation.
+- BCryptJs was used to implement authentication from scratch.
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
