@@ -2,6 +2,8 @@
 
 countryguessr (with nextjs) is a full-stack Nextjs and TailwindCSS application created to be a simple quiz game. it has many features, such as multiple gamemodes, a live global leaderboard, user login and authentication, high scores, and more. read more about its functionality and technologies used to create it below.
 
+check it out here: https://countryguessr-with-nextjs.vercel.app/
+
 ## features
 
 countryguessr has the following three gamemodes:
