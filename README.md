@@ -7,7 +7,7 @@ check it out here: https://countryguessr-with-nextjs.vercel.app/
 ## features
 
 countryguessr has the following three gamemodes:
-- a regular quiz mode where a country's silhouette, along with three hints, is shown to the user; based on the number of hints unconvered, and whether the user guessed correctly, points are awarded.
+- a regular quiz mode where a country's silhouette, along with three hints, is shown to the user; based on the number of hints uncovered, and whether the user guessed correctly, points are awarded.
 - a harder quiz mode, which is the same as the regular mode except the country's silhouette is initially blurred and using hints costs more points.
 - a timed, competitive mode, where users have to gain as many points as possible within five minutes; once the time is up, users can be placed on the leaderboard based on their score.
 
@@ -35,5 +35,6 @@ packages:
 - Zod was used for server-side validation.
 - BCryptJs was used to implement authentication from scratch.
 
+the RESTCountries api was used for fetching country data.
 
 
